@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Sesión de Protocolo SIP: Definición, Comunicación y Establecimiento
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .slide {
+        display: none;
+      }
+      .active {
+        display: block;
+      }
+      .code-block {
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.9rem;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      body {
+        background: linear-gradient(135deg, #1e3a8a, #7c3aed, #db2777);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .slide {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      .slide-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body class="font-sans">
+    <div class="container mx-auto p-6">
+      <!-- Slide 1: Portada -->
+      <div
+        id="slide-1"
+        class="slide active bg-white rounded-lg shadow-lg p-10 text-center"
+      >
+        <h1 class="text-4xl font-bold text-blue-600 mb-4">
+          Protocolo de Inicio de Sesiones (SIP)
+        </h1>
+        <h2 class="text-2xl text-gray-600 mb-6">
+          Definición, Comunicación y Establecimiento
+        </h2>
+        <p class="text-lg text-gray-800">Profesor: Alejandro De Mendoza</p>
+        <p class="text-lg text-gray-800">Fecha: 05 de junio de 2025</p>
+        <img
+          src="https://picsum.photos/id/1055/600/200"
+          alt="SIP"
+          class="slide-image"
+        />
+        <div class="mt-8">
+          <button
+            onclick="nextSlide()"
+            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 2: Objetivos -->
+      <div id="slide-2" class="slide bg-white rounded-lg shadow-lg p-10">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6">
+          Objetivos de la Sesión
+        </h2>
+        <ul class="list-disc list-inside text-lg text-gray-800 space-y-2">
+          <li>Comprender qué es SIP y su propósito en redes IP.</li>
+          <li>Identificar sus componentes: User Agent, Proxy, Registrar.</li>
+          <li>Analizar la estructura de los mensajes SIP.</li>
+          <li>Simular el proceso de establecimiento de sesiones.</li>
+        </ul>
+        <img
+          src="https://picsum.photos/id/1056/600/200"
+          alt="Objetivos"
+          class="slide-image"
+        />
+        <div class="mt-8 flex justify-between">
+          <button
+            onclick="prevSlide()"
+            class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+          >
+            Atrás
+          </button>
+          <button
+            onclick="nextSlide()"
+            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 3: ¿Qué es SIP? -->
+      <div id="slide-3" class="slide bg-white rounded-lg shadow-lg p-10">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6">¿Qué es SIP?</h2>
+        <p class="text-lg text-gray-800 mb-4">
+          SIP (Session Initiation Protocol) es un protocolo de señalización que
+          permite iniciar, mantener y finalizar sesiones multimedia entre dos o
+          más participantes en una red IP.
+        </p>
+        <p class="text-lg text-gray-800">
+          Opera sobre TCP/UDP, generalmente en el puerto 5060, y utiliza
+          mensajes de texto similares a HTTP.
+        </p>
+        <img
+          src="https://picsum.photos/id/1057/600/200"
+          alt="Qué es SIP"
+          class="slide-image"
+        />
+        <div class="mt-8 flex justify-between">
+          <button
+            onclick="prevSlide()"
+            class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+          >
+            Atrás
+          </button>
+          <button
+            onclick="nextSlide()"
+            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 4: Componentes SIP -->
+      <div id="slide-4" class="slide bg-white rounded-lg shadow-lg p-10">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6">
+          Componentes del Protocolo SIP
+        </h2>
+        <ul class="list-disc list-inside text-lg text-gray-800 space-y-2">
+          <li>
+            <strong>User Agent (UA):</strong> Usuario que envía o recibe la
+            comunicación.
+          </li>
+          <li>
+            <strong>Proxy Server:</strong> Encargado de enrutar solicitudes.
+          </li>
+          <li>
+            <strong>Registrar:</strong> Registra la localización del usuario.
+          </li>
+          <li>
+            <strong>Location Service:</strong> Asiste en la localización del
+            destino.
+          </li>
+        </ul>
+        <img
+          src="https://picsum.photos/id/1058/600/200"
+          alt="Componentes SIP"
+          class="slide-image"
+        />
+        <div class="mt-8 flex justify-between">
+          <button
+            onclick="prevSlide()"
+            class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+          >
+            Atrás
+          </button>
+          <button
+            onclick="nextSlide()"
+            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 5: Establecimiento de sesión -->
+      <div id="slide-5" class="slide bg-white rounded-lg shadow-lg p-10">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6">
+          Establecimiento de Sesión SIP
+        </h2>
+        <p class="text-lg text-gray-800 mb-4">
+          La sesión se establece con un flujo de mensajes como el siguiente:
+        </p>
+        <pre class="code-block">
+INVITE →
+ 100 Trying ←
+180 Ringing ←
+ 200 OK ←
+    ACK →
+      </pre
+        >
+        <img
+          src="https://picsum.photos/id/1059/600/200"
+          alt="Establecimiento SIP"
+          class="slide-image"
+        />
+        <div class="mt-8 flex justify-between">
+          <button
+            onclick="prevSlide()"
+            class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+          >
+            Atrás
+          </button>
+          <button
+            onclick="nextSlide()"
+            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 6: Actividad práctica -->
+      <div id="slide-6" class="slide bg-white rounded-lg shadow-lg p-10">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6">
+          Actividad Práctica
+        </h2>
+        <ul class="list-disc list-inside text-lg text-gray-800 space-y-2">
+          <li>
+            Analizar una captura de red en Wireshark con filtro
+            <code>sip</code>.
+          </li>
+          <li>Identificar mensajes INVITE, ACK, BYE y respuestas.</li>
+          <li>
+            Simular señalización SIP con tarjetas y roles: Alice, Bob, Proxy.
+          </li>
+        </ul>
+        <img
+          src="https://picsum.photos/id/1060/600/200"
+          alt="Actividad SIP"
+          class="slide-image"
+        />
+        <div class="mt-8 flex justify-between">
+          <button
+            onclick="prevSlide()"
+            class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+          >
+            Atrás
+          </button>
+          <button
+            onclick="nextSlide()"
+            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 7: Cierre -->
+      <div id="slide-7" class="slide bg-white rounded-lg shadow-lg p-10">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6">
+          Cierre y Reflexión
+        </h2>
+        <p class="text-lg text-gray-800 mb-4">
+          Comprender el protocolo SIP permite a los estudiantes interpretar y
+          diseñar soluciones de comunicación efectivas en redes modernas.
+        </p>
+        <textarea
+          id="reflection"
+          class="w-full border p-2 rounded mt-2"
+          rows="3"
+          placeholder="¿Qué aprendiste sobre SIP?"
+        ></textarea>
+        <button
+          id="saveReflection"
+          class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mt-2"
+        >
+          Guardar
+        </button>
+        <p id="reflectionOutput" class="text-lg text-gray-800 mt-2"></p>
+        <pre class="code-block mt-2">
+document.getElementById('saveReflection').addEventListener('click', () => {
+  const text = document.getElementById('reflection').value;
+  document.getElementById('reflectionOutput').textContent = text ? 'Resumen guardado: ' + text : 'Escribe algo primero.';
+});
+      </pre
+        >
+        <img
+          src="https://picsum.photos/id/1064/600/200"
+          alt="Cierre"
+          class="slide-image"
+        />
+        <div class="mt-8 flex justify-start">
+          <button
+            onclick="prevSlide()"
+            class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+          >
+            Atrás
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentSlide = 1;
+      const totalSlides = 7;
+      function showSlide(n) {
+        document
+          .querySelectorAll(".slide")
+          .forEach((slide) => slide.classList.remove("active"));
+        document.getElementById(`slide-${n}`).classList.add("active");
+        currentSlide = n;
+      }
+      function nextSlide() {
+        if (currentSlide < totalSlides) showSlide(currentSlide + 1);
+      }
+      function prevSlide() {
+        if (currentSlide > 1) showSlide(currentSlide - 1);
+      }
+    </script>
+  </body>
+</html>

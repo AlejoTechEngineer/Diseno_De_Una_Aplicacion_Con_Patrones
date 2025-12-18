@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simulación Interactiva del Protocolo SIP</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+        color: #004080;
+      }
+
+      .contenedor {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        position: relative;
+        height: 350px;
+        margin-top: 40px;
+      }
+
+      .agente {
+        background-color: #e6f0fa;
+        border: 2px solid #0077cc;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        height: 60px;
+      }
+
+      .mensaje {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        background-color: #0077cc;
+        color: white;
+        padding: 4px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .mensaje:hover {
+        transform: scale(1.03);
+        background-color: #005fa3;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 40px;
+        background-color: white;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #0077cc;
+        color: white;
+      }
+
+      tr:hover {
+        background-color: #f0f8ff;
+      }
+
+      .error {
+        background-color: #ffe6e6;
+      }
+
+      .correcto {
+        background-color: #e6ffe6;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Simulación Interactiva del Protocolo SIP</h1>
+
+    <h2>Visualización del Flujo de Señalización</h2>
+
+    <div class="contenedor">
+      <div class="agente">
+        <h3>UAC</h3>
+      </div>
+      <div class="agente">
+        <h3>Proxy</h3>
+      </div>
+      <div class="agente">
+        <h3>UAS</h3>
+      </div>
+
+      <!-- Mensajes SIP con posición relativa -->
+      <div
+        class="mensaje"
+        style="top: 100px"
+        data-desc="Solicitud inicial para establecer la sesión"
+      >
+        INVITE ➜
+      </div>
+      <div
+        class="mensaje"
+        style="top: 140px"
+        data-desc="Respuesta provisional: el servidor está procesando la solicitud"
+      >
+        ➜ 100 TRYING
+      </div>
+      <div
+        class="mensaje"
+        style="top: 180px"
+        data-desc="Respuesta: el teléfono está sonando"
+      >
+        ➜ 180 RINGING
+      </div>
+      <div
+        class="mensaje"
+        style="top: 220px"
+        data-desc="La solicitud fue aceptada"
+      >
+        ➜ 200 OK
+      </div>
+      <div
+        class="mensaje"
+        style="top: 260px"
+        data-desc="Confirmación de que se recibió la respuesta 200 OK"
+      >
+        ACK ➜
+      </div>
+      <div
+        class="mensaje"
+        style="top: 300px"
+        data-desc="Finalización de la sesión por parte del UAS"
+      >
+        BYE ➜
+      </div>
+    </div>
+
+    <h2>Tabla de Tramas Simuladas</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Mensaje</th>
+          <th>Desde</th>
+          <th>Hacia</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="correcto">
+          <td>1</td>
+          <td>INVITE</td>
+          <td>UAC</td>
+          <td>Proxy</td>
+          <td>Inicio de solicitud de sesión</td>
+        </tr>
+        <tr class="correcto">
+          <td>2</td>
+          <td>100 TRYING</td>
+          <td>Proxy</td>
+          <td>UAC</td>
+          <td>El servidor está procesando la solicitud</td>
+        </tr>
+        <tr class="correcto">
+          <td>3</td>
+          <td>180 RINGING</td>
+          <td>UAS</td>
+          <td>UAC</td>
+          <td>El usuario está siendo alertado</td>
+        </tr>
+        <tr class="correcto">
+          <td>4</td>
+          <td>200 OK</td>
+          <td>UAS</td>
+          <td>UAC</td>
+          <td>La sesión ha sido aceptada</td>
+        </tr>
+        <tr class="correcto">
+          <td>5</td>
+          <td>ACK</td>
+          <td>UAC</td>
+          <td>UAS</td>
+          <td>Confirmación final del establecimiento de la sesión</td>
+        </tr>
+        <tr class="error">
+          <td>6</td>
+          <td>BYE</td>
+          <td>UAS</td>
+          <td>UAC</td>
+          <td>
+            Finalización de sesión (correcta, pero inesperada en esta etapa)
+          </td>
+        </tr>
+        <tr class="error">
+          <td>7</td>
+          <td>404 Not Found</td>
+          <td>Proxy</td>
+          <td>UAC</td>
+          <td>El usuario solicitado no fue encontrado (error)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      // Mostrar mensaje emergente al hacer clic sobre los mensajes
+      document.querySelectorAll(".mensaje").forEach((mensaje) => {
+        mensaje.addEventListener("click", () => {
+          const desc = mensaje.getAttribute("data-desc");
+          alert(`Mensaje SIP:\n\n${mensaje.textContent.trim()}\n\n${desc}`);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simulación de Tráfico SIP</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #004080;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #0077cc;
+        color: white;
+      }
+
+      tr:hover {
+        background-color: #f0f8ff;
+      }
+
+      .error {
+        background-color: #ffe6e6;
+      }
+
+      .correcto {
+        background-color: #e6ffe6;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Simulación de Tramas SIP</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Mensaje</th>
+          <th>Desde</th>
+          <th>Hacia</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="correcto">
+          <td>1</td>
+          <td>INVITE</td>
+          <td>UAC</td>
+          <td>Proxy</td>
+          <td>Inicio de solicitud de sesión</td>
+        </tr>
+        <tr class="correcto">
+          <td>2</td>
+          <td>100 TRYING</td>
+          <td>Proxy</td>
+          <td>UAC</td>
+          <td>El servidor está procesando la solicitud</td>
+        </tr>
+        <tr class="correcto">
+          <td>3</td>
+          <td>180 RINGING</td>
+          <td>UAS</td>
+          <td>UAC</td>
+          <td>El usuario está siendo alertado</td>
+        </tr>
+        <tr class="correcto">
+          <td>4</td>
+          <td>200 OK</td>
+          <td>UAS</td>
+          <td>UAC</td>
+          <td>La sesión ha sido aceptada</td>
+        </tr>
+        <tr class="correcto">
+          <td>5</td>
+          <td>ACK</td>
+          <td>UAC</td>
+          <td>UAS</td>
+          <td>Confirmación final del establecimiento de la sesión</td>
+        </tr>
+        <tr class="error">
+          <td>6</td>
+          <td>BYE</td>
+          <td>UAS</td>
+          <td>UAC</td>
+          <td>
+            Finalización de sesión (correcta, pero inesperada en esta etapa)
+          </td>
+        </tr>
+        <tr class="error">
+          <td>7</td>
+          <td>404 Not Found</td>
+          <td>Proxy</td>
+          <td>UAC</td>
+          <td>El usuario solicitado no fue encontrado (error)</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

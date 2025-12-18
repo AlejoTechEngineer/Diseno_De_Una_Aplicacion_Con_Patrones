@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Diagrama de Señalización SIP</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Agregar en <head> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".mensaje").forEach((msg) => {
+          msg.addEventListener("click", () => {
+            alert(`Mensaje SIP: ${msg.textContent.trim()}`);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Flujo de Señalización SIP</h1>
+    </header>
+
+    <main class="contenedor">
+      <div class="agente">
+        <h2>UAC</h2>
+      </div>
+      <div class="agente">
+        <h2>Proxy</h2>
+      </div>
+      <div class="agente">
+        <h2>UAS</h2>
+      </div>
+
+      <!-- Mensajes -->
+      <div class="mensaje" style="top: 100px">INVITE ➜</div>
+      <div class="mensaje" style="top: 140px">➜ 100 TRYING</div>
+      <div class="mensaje" style="top: 180px">➜ 180 RINGING</div>
+      <div class="mensaje" style="top: 220px">➜ 200 OK</div>
+      <div class="mensaje" style="top: 260px">ACK ➜</div>
+    </main>
+  </body>
+</html>
