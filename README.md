@@ -27,16 +27,6 @@ Proyecto de diseño de software desarrollado por **Alejandro De Mendoza** que im
 | **Facade** | Simplificar el acceso a un subsistema complejo | SRP |
 | **Proxy** | Control de acceso y comportamiento adicional sobre un objeto real | SRP / OCP |
 
-## Contenido del repositorio
-
-| Archivo / Carpeta | Descripción |
-|---|---|
-| `PatronesEstructurales/` | Implementaciones Java de los 5 patrones GoF |
-| `Aula No. 8/` | Ejercicios prácticos propios — sesión de diseño 8 |
-| `Apoyo en aula.docx` | Notas propias de análisis de patrones |
-| `Apoyo en aula2.docx` | Ampliación de notas y reflexiones de diseño |
-| `Material de Apoyo.docx / .pdf` | Documento propio de estudio y síntesis |
-
 ## Arquitectura
 
 ```mermaid
@@ -51,6 +41,16 @@ flowchart TD
     H --> I[Diagrama de clases UML - StarUML]
     I --> J[Ejercicios practicos - Aula No. 8/]
 ```
+
+## Contenido del repositorio
+
+| Archivo / Carpeta | Descripción |
+|---|---|
+| `PatronesEstructurales/` | Implementaciones Java de los 5 patrones GoF |
+| `Aula No. 8/` | Ejercicios prácticos propios — sesión de diseño 8 |
+| `Apoyo en aula.docx` | Notas propias de análisis de patrones |
+| `Apoyo en aula2.docx` | Ampliación de notas y reflexiones de diseño |
+| `Material de Apoyo.docx / .pdf` | Documento propio de estudio y síntesis |
 
 ## Tecnologías y herramientas
 
