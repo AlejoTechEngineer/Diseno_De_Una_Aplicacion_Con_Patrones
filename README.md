@@ -37,6 +37,21 @@ Proyecto de diseño de software desarrollado por **Alejandro De Mendoza** que im
 | `Apoyo en aula2.docx` | Ampliación de notas y reflexiones de diseño |
 | `Material de Apoyo.docx / .pdf` | Documento propio de estudio y síntesis |
 
+## Arquitectura
+
+```mermaid
+flowchart TD
+    A[Problema de diseno detectado] --> B{Patron GoF Estructural}
+    B --> C[Composite - OCP - objetos uniformes]
+    B --> D[Adapter - ISP/OCP - interfaces incompatibles]
+    B --> E[Decorator - OCP/SRP - responsabilidades dinamicas]
+    B --> F[Facade - SRP - acceso simplificado]
+    B --> G[Proxy - SRP/OCP - control de acceso]
+    C & D & E & F & G --> H[PatronesEstructurales/ - implementacion Java]
+    H --> I[Diagrama de clases UML - StarUML]
+    I --> J[Ejercicios practicos - Aula No. 8/]
+```
+
 ## Tecnologías y herramientas
 
 - **Java** — implementación de los patrones estructurales
