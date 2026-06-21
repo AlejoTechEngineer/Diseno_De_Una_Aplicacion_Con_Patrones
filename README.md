@@ -1,3 +1,5 @@
+<div align="center">
+
 # Diseño de una Aplicación con Patrones Estructurales GoF
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
@@ -8,6 +10,10 @@
 > Implementación propia de patrones estructurales GoF aplicados a un sistema de información real: análisis de problemas de diseño, modelado UML y código fuente Java.
 
 ## Descripción
+
+</div>
+
+---
 
 Proyecto de diseño de software desarrollado por **Alejandro De Mendoza** que implementa cinco **patrones estructurales de la familia GoF (Gang of Four)**: Composite, Adapter, Decorator, Facade y Proxy. Cada patrón es analizado en términos del problema de diseño que resuelve, modelado mediante diagrama de clases UML e implementado en Java, demostrando cómo mejoran el acoplamiento, la extensibilidad y la reutilización del código.
 
